@@ -3,7 +3,20 @@ CloudFormation template for a [Jenkins](https://jenkins-ci.org/) server with aut
 Prerequisites:
 * Route 53 hosted zone for the desired DNS address (e.g., `mycompany.com` for `jenkins.mycompany.com`)
 
-## Overview
+***Update in 2017***
+
+i forked this repo (https://github.com/thefactory/cloudformation-jenkins) while we (Mercateo) want to create a new jenkins instance in AWS,  authentication is possible over active directory and it should be redeploysafe over cloudformation. The instance should be accessible over HTTPS
+
+There fore i added some modifications
+
+* jenkins uses HTTPS
+* jenkins was put to internal balancer and should be reachable internal only.
+* jenkins uses asummeRole and was limited only for writting log
+* the instance was added to autoscaling group with one instance
+* the SSL certificate was configured so that all connection will be encrypted and terminate at ELB, connection between ELB and EC2 is however not encrypted
+
+***end of updated***
+
 
 This template bootstraps a Jenkins server.
 
